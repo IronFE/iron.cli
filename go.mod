@@ -18,7 +18,6 @@ require (
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.13.4 // indirect
 	github.com/aws/aws-sdk-go-v2/service/signin v1.0.5 // indirect
-	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	golang.org/x/sys v0.41.0 // indirect
 )
 
