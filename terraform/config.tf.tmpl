@@ -1,0 +1,33 @@
+terraform {
+	required_providers {
+		{{range .Providers}}
+			{{.Name}} = {
+				source = "{{.Source}}"
+			}
+		{{end}}
+	}
+
+	backend "{{.Backend.Type}}" {
+		{{range $k, $v := .Backend.Config}}{{$k}} = "{{$v}}"
+		{{end}}
+	}
+
+	required_version = "{{.TerraformVersion}}"
+}
+
+{{range .Providers}}
+provider "{{.Name}}" {
+	{{range $k, $v := .Config}}{{$k}} = "{{$v}}"
+	{{end}}
+
+    {{if eq .Name "aws" }}
+	default_tags {
+		tags = {
+			{{range $label, $value := .Tags}}{{$label}} = "{{$value}}"
+            {{end}}
+		}
+	}
+    {{end}}
+}
+{{end}}
+		
